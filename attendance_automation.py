@@ -10,10 +10,10 @@ students = []
 here = list()
 
 for line in codecs.open("attendance.txt", encoding="utf8"):
-    if len(line[:-9]):
+    if len(line[:-9]) and line[:-9] in students:
         here.append(line[:-9])
 
-new_list = list(set(students).difference(here))
+not_attended = list(set(students).difference(here))
 
 # Number that you'll get from twilio
 from_whatsapp_number = 'whatsapp:+'
@@ -29,7 +29,7 @@ client = Client(account_sid, auth_token)
 
 date = datetime.date.today()
 report = "Tarih: " + str(date) + "\nKatılımcı sayısı: " + str(len(here)) + "\n\nDerse Katılmayan Öğrenciler:\n"
-for i in range(len(new_list)):
-    report += "-"+new_list[i].title() + "\n"
+for i in range(len(not_attended)):
+    report += "-"+not_attended[i].title() + "\n"
 
 client.messages.create(body=report, from_=from_whatsapp_number, to=to_whatsapp_number)
