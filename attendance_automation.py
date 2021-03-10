@@ -4,6 +4,7 @@ import codecs
 from twilio.rest import Client
 import datetime
 
+# Student list
 students = []
 
 here = list()
