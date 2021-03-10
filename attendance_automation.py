@@ -13,7 +13,6 @@ for line in codecs.open("attendance.txt", encoding="utf8"):
     if len(line[:-9]):
         here.append(line[:-9])
 
-print(len(here))
 new_list = list(set(students).difference(here))
 
 # Number that you'll get from twilio
