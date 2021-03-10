@@ -15,7 +15,7 @@ for line in codecs.open("attendance.txt", encoding="utf8"):
 
 not_attended = list(set(students).difference(here))
 
-# Number that you'll get from twilio
+# Phone number that you'll get from twilio
 from_whatsapp_number = 'whatsapp:+'
 # Your phone number
 to_whatsapp_number = 'whatsapp:+'
