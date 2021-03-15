@@ -10,15 +10,17 @@ students = []
 here = list()
 
 for line in codecs.open("attendance.txt", encoding="utf8"):
-    if len(line[:-9]) and line[:-9] in students:
-        here.append(line[:-9])
+    # To get rid of the hour at the end of the name -> line[:-9]
+    line_upper = line[:-9].upper()
+    if len(line_upper) and line_upper in students and line_upper not in here:
+        here.append(line_upper)
 
 not_attended = list(set(students).difference(here))
 
 # Phone number that you'll get from twilio
 from_whatsapp_number = 'whatsapp:+'
 # Your phone number
-to_whatsapp_number = 'whatsapp+'
+to_whatsapp_number = 'whatsapp:+'
 
 # Your Account SID from twilio
 account_sid = ""
